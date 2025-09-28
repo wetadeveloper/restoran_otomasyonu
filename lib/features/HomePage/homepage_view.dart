@@ -11,7 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color dashboardCardColor = Color(0xFF8B4513);
+    const Color dashboardCardColor = Colors.blue;
+    const Color dashboardCardColors2 = Color(0xFF8B4513);
 
     return Scaffold(
       backgroundColor: AppColors.background,

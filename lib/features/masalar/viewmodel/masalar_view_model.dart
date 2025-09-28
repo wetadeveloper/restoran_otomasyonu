@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:restoran_otomasyonu/core/base/base_view_model.dart';
 import 'package:restoran_otomasyonu/data/models/masa_model.dart';
 import 'package:restoran_otomasyonu/data/repositories/masa_repository.dart';
@@ -14,8 +15,10 @@ class MasalarViewModel extends BaseViewModel {
       setLoading(true);
       _masalar = await _repository.fetchMasalar();
     } catch (e) {
-      print("Masalar yüklenirken hata oluştu: $e");
-      setError("Masalar yüklenemedi: $e");
+      if (kDebugMode) {
+        debugPrint("Masalar yüklenirken hata oluştu: $e");
+        setError("Masalar yüklenemedi: $e");
+      }
     } finally {
       setLoading(false);
     }
@@ -28,7 +31,9 @@ class MasalarViewModel extends BaseViewModel {
       await _repository.updateMasa(updated);
       await fetchMasalar(); // yeniden listeyi çek
     } catch (e) {
-      print("Masa durumu güncellenirken hata oluştu: $e");
+      if (kDebugMode) {
+        debugPrint("Masa durumu güncellenirken hata oluştu: $e");
+      }
       setError("Masa güncellenemedi: $e");
     }
   }

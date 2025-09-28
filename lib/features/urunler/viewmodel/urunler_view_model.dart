@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:restoran_otomasyonu/core/base/base_view_model.dart';
 import 'package:restoran_otomasyonu/data/models/urun_model.dart';
 import 'package:restoran_otomasyonu/data/repositories/urun_repository.dart';
@@ -13,8 +14,10 @@ class UrunlerViewModel extends BaseViewModel {
       setLoading(true);
       _urunler = await _repository.fetchUrunler();
     } catch (e) {
-      print("Ürünler alınamadı: $e");
-      setError("Ürünler alınamadı: $e");
+      if (kDebugMode) {
+        debugPrint("Ürünler alınamadı: $e");
+        setError("Ürünler alınamadı: $e");
+      }
     } finally {
       setLoading(false);
     }

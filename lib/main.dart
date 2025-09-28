@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         navigatorKey: navigationService.navigatorKey,
-        title: 'Flutter Demo',
+        title: 'Restoran Otomasyonu',
         theme: ThemeData(primarySwatch: Colors.blue),
         home: const HomePage(),
       ),

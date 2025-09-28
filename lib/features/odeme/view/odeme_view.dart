@@ -20,11 +20,13 @@ class _OdemeViewState extends State<OdemeView> {
   void initState() {
     super.initState();
     Future.microtask(() async {
-      final siparisViewModel = context.read<SiparislerViewModel>();
-      final urunViewModel = context.read<UrunlerViewModel>();
+      if (mounted) {
+        final siparisViewModel = context.read<SiparislerViewModel>();
+        final urunViewModel = context.read<UrunlerViewModel>();
 
-      await siparisViewModel.getSiparisler();
-      await urunViewModel.fetchUrunler();
+        await siparisViewModel.getSiparisler();
+        await urunViewModel.fetchUrunler();
+      }
     });
   }
 

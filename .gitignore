@@ -55,7 +55,8 @@ lib/firebase_options.dart
 # =========================
 *.sqlite
 *.sqlite3
-backend/db.json
+backend
+
 
 # =========================
 # iOS / Xcode

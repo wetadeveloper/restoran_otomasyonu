@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:restoran_otomasyonu/core/base/base_view_model.dart';
 import 'package:restoran_otomasyonu/data/models/siparis_model.dart';
 import 'package:restoran_otomasyonu/data/repositories/siparis_repository.dart';
@@ -13,8 +14,10 @@ class SiparislerViewModel extends BaseViewModel {
       setLoading(true);
       _siparisler = await _repository.fetchSiparisler();
     } catch (e) {
-      print("Siparişler alınamadı: $e");
-      setError("Siparişler alınamadı: $e");
+      if (kDebugMode) {
+        debugPrint("Siparişler alınamadı: $e");
+        setError("Siparişler alınamadı: $e");
+      }
     } finally {
       setLoading(false);
     }
